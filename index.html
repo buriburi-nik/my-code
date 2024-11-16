@@ -6,6 +6,124 @@
   <title>YouTube Clone</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: white;
+    }
+    .header, .main {
+      font-family: Arial, sans-serif;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #f9f9f9;
+      transition: background-color 0.3s;
+    }
+    .dark-mode .header {
+      background-color: #333;
+    }
+    .left-h, .middle-h, .right-h {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .middle-h input {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+    }
+    .middle-h button {
+      padding: 5px 10px;
+      background-color: #eee;
+      border: none;
+      border-radius: 50%;
+    }
+    .dark-mode .middle-h button {
+      background-color: #555;
+    }
+    .sidebar {
+      width: 240px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      position: fixed;
+      height: 100%;
+      transition: background-color 0.3s;
+    }
+    .dark-mode .sidebar {
+      background-color: #333;
+    }
+    .sidebar .sidebar-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      cursor: pointer;
+    }
+    .sidebar .sidebar-item:hover {
+      background-color: #eee;
+    }
+    .dark-mode .sidebar .sidebar-item:hover {
+      background-color: #444;
+    }
+    .contents {
+      margin-left: 260px;
+      padding: 20px;
+    }
+    .dark-mode .contents {
+      background-color: #181818;
+    }
+    .video-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .video-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .dark-mode .video-card {
+      background-color: #2a2a2a;
+      border: 1px solid #444;
+    }
+    .video-card iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+    }
+    .video-info {
+      padding: 10px;
+    }
+    .video-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .video-channel {
+      font-size: 14px;
+      color: #555;
+    }
+    .dark-mode .video-channel {
+      color: #ccc;
+    }
+    .dark-mode .video-title {
+      color: white;
+    }
+    .dark-mode .video-info {
+      color: white;
+    }
+  </style>
 </head>
 <body>
   <div class="header">
@@ -60,86 +178,52 @@
         </div>
       </div>
     </div>
-
     <div class="contents">
       <h1>Recommended</h1>
       <div class="video-list">
         <div class="video-card">
-          <img src="https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg" alt="Video Thumbnail">
+          <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Learn HTML & CSS"></iframe>
           <div class="video-info">
             <div class="video-title">Learn HTML & CSS</div>
             <div class="video-channel">FreeCodeCamp</div>
-            <div class="video-actions">
-              <button class="like-btn">👍 Like</button>
-              <button class="dislike-btn">👎 Dislike</button>
-            </div>
-            <div class="comment-section">
-              <input type="text" placeholder="Add a comment">
-              <button>Comment</button>
-            </div>
           </div>
         </div>
         <div class="video-card">
-          <img src="https://i.ytimg.com/vi/DuF82GgXQsA/hqdefault.jpg" alt="Video Thumbnail">
+          <iframe src="https://www.youtube.com/embed/DuF82GgXQsA" title="JavaScript Crash Course"></iframe>
           <div class="video-info">
             <div class="video-title">JavaScript Crash Course</div>
             <div class="video-channel">Traversy Media</div>
-            <div class="video-actions">
-              <button class="like-btn">👍 Like</button>
-              <button class="dislike-btn">👎 Dislike</button>
-            </div>
-            <div class="comment-section">
-              <input type="text" placeholder="Add a comment">
-              <button>Comment</button>
-            </div>
           </div>
         </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/hYzwCsKGRrg" title="Responsive Web Design"></iframe>
+          <div class="video-info">
+            <div class="video-title">Responsive Web Design</div>
+            <div class="video-channel">The Net Ninja</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/PkZNo7MFNFg" title="JavaScript Tutorial"></iframe>
+          <div class="video-info">
+            <div class="video-title">JavaScript Tutorial</div>
+            <div class="video-channel">Programming with Mosh</div>
+          </div>
+        </div>
+        <!-- Add more videos here -->
       </div>
     </div>
   </main>
 
-  <div class="video-upload">
-    <h2>Upload a Video</h2>
-    <form>
-      <input type="text" placeholder="Video Title" required>
-      <input type="text" placeholder="Channel Name" required>
-      <input type="file" accept="video/*" required>
-      <button type="submit">Upload</button>
-    </form>
-  </div>
-
   <footer>
-    <div class="footer-links">
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-      <a href="#">Privacy Policy</a>
-    </div>
-    <div class="social-icons">
-      <i class="material-icons">facebook</i>
-      <i class="material-icons">twitter</i>
-      <i class="material-icons">instagram</i>
-    </div>
+    <button id="dark-mode-toggle">Toggle Dark Mode</button>
   </footer>
 
   <script>
-    document.querySelectorAll('.like-btn').forEach(btn => {
-      btn.addEventListener('click', () => alert('Liked!'));
-    });
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
 
-    document.querySelectorAll('.dislike-btn').forEach(btn => {
-      btn.addEventListener('click', () => alert('Disliked!'));
-    });
-
-    document.querySelectorAll('.comment-section button').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const input = e.target.previousElementSibling;
-        if (input.value) {
-          alert(`Commented: ${input.value}`);
-          input.value = '';
-        } else {
-          alert('Please enter a comment.');
-        }
-      });
+    darkModeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
     });
   </script>
 </body>
