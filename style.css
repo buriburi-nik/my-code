@@ -1,258 +1,230 @@
-/* General Reset */
-body, h1, h2, h3, p, ul, li, a, input, button {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Clone</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: white;
+    }
+    .header, .main {
+      font-family: Arial, sans-serif;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #f9f9f9;
+      transition: background-color 0.3s;
+    }
+    .dark-mode .header {
+      background-color: #333;
+    }
+    .left-h, .middle-h, .right-h {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .middle-h input {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+    }
+    .middle-h button {
+      padding: 5px 10px;
+      background-color: #eee;
+      border: none;
+      border-radius: 50%;
+    }
+    .dark-mode .middle-h button {
+      background-color: #555;
+    }
+    .sidebar {
+      width: 240px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      position: fixed;
+      height: 100%;
+      transition: background-color 0.3s;
+    }
+    .dark-mode .sidebar {
+      background-color: #333;
+    }
+    .sidebar .sidebar-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      cursor: pointer;
+    }
+    .sidebar .sidebar-item:hover {
+      background-color: #eee;
+    }
+    .dark-mode .sidebar .sidebar-item:hover {
+      background-color: #444;
+    }
+    .contents {
+      margin-left: 260px;
+      padding: 20px;
+    }
+    .dark-mode .contents {
+      background-color: #181818;
+    }
+    .video-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .video-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .dark-mode .video-card {
+      background-color: #2a2a2a;
+      border: 1px solid #444;
+    }
+    .video-card iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+    }
+    .video-info {
+      padding: 10px;
+    }
+    .video-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .video-channel {
+      font-size: 14px;
+      color: #555;
+    }
+    .dark-mode .video-channel {
+      color: #ccc;
+    }
+    .dark-mode .video-title {
+      color: white;
+    }
+    .dark-mode .video-info {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="left-h">
+      <i class="material-icons">menu</i>
+      <img src="https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc" alt="YouTube-logo" width="100">
+    </div>
+    <div class="middle-h">
+      <input type="text" placeholder="Search">
+      <button>
+        <i class="material-icons">search</i>
+      </button>
+    </div>
+    <div class="right-h">
+      <i class="material-icons">search</i>
+      <i class="material-icons">videocam</i>
+      <i class="material-icons">apps</i>
+      <i class="material-icons">notifications</i>
+      <i class="material-icons">account_circle</i>
+    </div>
+  </div>
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-}
+  <main class="main">
+    <div class="sidebar">
+      <div class="upper">
+        <div class="sidebar-item">
+          <i class="material-icons">home</i><span>Home</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="material-icons">local_fire_department</i><span>Trending</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="material-icons">subscriptions</i><span>Subscriptions</span>
+        </div>
+      </div>
+      <hr>
+      <div class="lower">
+        <div class="sidebar-item">
+          <i class="material-icons">library_add_check</i><span>Library</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="material-icons">history</i><span>History</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="material-icons">play_arrow</i><span>Your Videos</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="material-icons">watch_later</i><span>Watch Later</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="material-icons">thumb_up</i><span>Liked Videos</span>
+        </div>
+      </div>
+    </div>
+    <div class="contents">
+      <h1>Recommended</h1>
+      <div class="video-list">
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Learn HTML & CSS"></iframe>
+          <div class="video-info">
+            <div class="video-title">Learn HTML & CSS</div>
+            <div class="video-channel">FreeCodeCamp</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/DuF82GgXQsA" title="JavaScript Crash Course"></iframe>
+          <div class="video-info">
+            <div class="video-title">JavaScript Crash Course</div>
+            <div class="video-channel">Traversy Media</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/hYzwCsKGRrg" title="Responsive Web Design"></iframe>
+          <div class="video-info">
+            <div class="video-title">Responsive Web Design</div>
+            <div class="video-channel">The Net Ninja</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/PkZNo7MFNFg" title="JavaScript Tutorial"></iframe>
+          <div class="video-info">
+            <div class="video-title">JavaScript Tutorial</div>
+            <div class="video-channel">Programming with Mosh</div>
+          </div>
+        </div>
+        <!-- Add more videos here -->
+      </div>
+    </div>
+  </main>
 
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+  <footer>
+    <button id="dark-mode-toggle">Toggle Dark Mode</button>
+  </footer>
 
-.header .left-h, .header .middle-h, .header .right-h {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
+  <script>
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
 
-.header .middle-h input {
-  padding: 5px 15px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  width: 300px;
-}
-
-.header .middle-h button {
-  padding: 5px 10px;
-  background-color: #ddd;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.header .right-h i {
-  cursor: pointer;
-  font-size: 24px;
-}
-
-/* Sidebar */
-.sidebar {
-  width: 240px;
-  position: fixed;
-  height: 100%;
-  background-color: #fff;
-  padding: 20px 10px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar .sidebar-item {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.sidebar .sidebar-item:hover {
-  background-color: #eee;
-}
-
-.sidebar .sidebar-item i {
-  font-size: 24px;
-  color: #555;
-}
-
-.sidebar .sidebar-item span {
-  margin-left: 10px;
-  font-size: 16px;
-  color: #333;
-}
-
-/* Contents */
-.contents {
-  margin-left: 260px;
-  padding: 20px;
-}
-
-.contents h1 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
-}
-
-.video-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-}
-
-.video-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.video-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.video-card img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-}
-
-.video-info {
-  padding: 10px;
-}
-
-.video-title {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
-}
-
-.video-channel {
-  font-size: 14px;
-  color: #777;
-}
-
-.video-actions {
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
-}
-
-.video-actions button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #ddd;
-  transition: background-color 0.3s ease;
-}
-
-.video-actions button:hover {
-  background-color: #bbb;
-}
-
-/* Comment Section */
-.comment-section {
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
-}
-
-.comment-section input {
-  flex: 1;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.comment-section button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.comment-section button:hover {
-  background-color: #0056b3;
-}
-
-/* Video Upload Section */
-.video-upload {
-  margin: 20px 260px 40px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.video-upload h2 {
-  margin-bottom: 15px;
-  font-size: 20px;
-  color: #333;
-}
-
-.video-upload form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.video-upload input, .video-upload button {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-.video-upload button {
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.video-upload button:hover {
-  background-color: #218838;
-}
-
-/* Footer */
-footer {
-  background-color: #f9f9f9;
-  padding: 20px;
-  text-align: center;
-  border-top: 1px solid #ddd;
-}
-
-footer .footer-links {
-  margin-bottom: 10px;
-}
-
-footer .footer-links a {
-  margin: 0 10px;
-  color: #007bff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-footer .footer-links a:hover {
-  color: #0056b3;
-}
-
-footer .social-icons i {
-  margin: 0 5px;
-  font-size: 24px;
-  color: #555;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-footer .social-icons i:hover {
-  color: #007bff;
-}
+    darkModeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+    });
+  </script>
+</body>
+</html>
