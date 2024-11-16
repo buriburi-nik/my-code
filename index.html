@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Clone</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <div class="header">
+    <div class="left-h">
+      <i class="material-icons">menu</i>
+      <img src="https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc" alt="YouTube-logo" width="100">
+    </div>
+    <div class="middle-h">
+      <input type="text" placeholder="Search">
+      <button>
+        <i class="material-icons">search</i>
+      </button>
+    </div>
+    <div class="right-h">
+      <i class="material-icons">search</i>
+      <i class="material-icons">videocam</i>
+      <i class="material-icons">apps</i>
+      <i class="material-icons">notifications</i>
+      <i class="material-icons">account_circle</i>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="sidebar">
+      <div class="upper">
+        <div class="sidebar-item">
+          <i class="material-icons">home</i><span>Home</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="material-icons">local_fire_department</i><span>Trending</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="material-icons">subscriptions</i><span>Subscriptions</span>
+        </div>
+      </div>
+      <hr>
+      <div class="lower">
+        <div class="sidebar-item">
+          <i class="material-icons">library_add_check</i><span>Library</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="material-icons">history</i><span>History</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="material-icons">play_arrow</i><span>Your Videos</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="material-icons">watch_later</i><span>Watch Later</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="material-icons">thumb_up</i><span>Liked Videos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contents">
+      <h1>Recommended</h1>
+      <div class="video-list">
+        <div class="video-card">
+          <img src="https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg" alt="Video Thumbnail">
+          <div class="video-info">
+            <div class="video-title">Learn HTML & CSS</div>
+            <div class="video-channel">FreeCodeCamp</div>
+            <div class="video-actions">
+              <button class="like-btn">👍 Like</button>
+              <button class="dislike-btn">👎 Dislike</button>
+            </div>
+            <div class="comment-section">
+              <input type="text" placeholder="Add a comment">
+              <button>Comment</button>
+            </div>
+          </div>
+        </div>
+        <div class="video-card">
+          <img src="https://i.ytimg.com/vi/DuF82GgXQsA/hqdefault.jpg" alt="Video Thumbnail">
+          <div class="video-info">
+            <div class="video-title">JavaScript Crash Course</div>
+            <div class="video-channel">Traversy Media</div>
+            <div class="video-actions">
+              <button class="like-btn">👍 Like</button>
+              <button class="dislike-btn">👎 Dislike</button>
+            </div>
+            <div class="comment-section">
+              <input type="text" placeholder="Add a comment">
+              <button>Comment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="video-upload">
+    <h2>Upload a Video</h2>
+    <form>
+      <input type="text" placeholder="Video Title" required>
+      <input type="text" placeholder="Channel Name" required>
+      <input type="file" accept="video/*" required>
+      <button type="submit">Upload</button>
+    </form>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="social-icons">
+      <i class="material-icons">facebook</i>
+      <i class="material-icons">twitter</i>
+      <i class="material-icons">instagram</i>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.like-btn').forEach(btn => {
+      btn.addEventListener('click', () => alert('Liked!'));
+    });
+
+    document.querySelectorAll('.dislike-btn').forEach(btn => {
+      btn.addEventListener('click', () => alert('Disliked!'));
+    });
+
+    document.querySelectorAll('.comment-section button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const input = e.target.previousElementSibling;
+        if (input.value) {
+          alert(`Commented: ${input.value}`);
+          input.value = '';
+        } else {
+          alert('Please enter a comment.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
